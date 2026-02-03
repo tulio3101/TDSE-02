@@ -1,0 +1,17 @@
+{
+  "model_type": "Logistic Regression with L2 Regularization",
+  "features": [
+    "Age",
+    "Sex",
+    "Cholesterol",
+    "BP",
+    "Max HR",
+    "ST depression",
+    "Number of vessels fluro"
+  ],
+  "lambda": 0.1,
+  "test_accuracy": 0.8148148148148148,
+  "test_f1": 0.7999999948088891,
+  "training_samples": 189,
+  "test_samples": 81
+}

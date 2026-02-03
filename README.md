@@ -36,7 +36,7 @@ Taking the above into account, the v alues associated with each one will not nec
 - Heart_Disease_Prediction.csv — dataset
 - heart_disease_lr_analysis.ipynb — main notebook (EDA, model, results)
 - README.md — project overview and instructions
-- images/ — screenshots for SageMaker evidence
+- images/ — screenshots for SageMaker evidence and Results of Notebook
 
 ## Getting Started
 Follow these steps to run the notebook locally.
@@ -66,7 +66,16 @@ Open heart_disease_lr_analysis.ipynb and run cells in order to:
 
 To perform this procedure, we use function provided by pandas such as **info()** and **describe()**. From these, we can determine if there are missing values in the dataset or what the average, minimum, or maximum values of a given characteristic is.
 
+![alt text](docs/images/DistributionHeartDIsease.png)
+
+In the image above, we can see a histogram that evaluates the number of patients who have heart disease or not.
+
 Similarly, we can use a **whisker box** with **Matplot** to identify outliers and consider normalize them.
+
+![alt text](docs/images/WhiskerBox.png)
+
+As can be seen in the image, in the data set we found some outliers with respect to cholesterol; we could normalize them, but since there are few of them, they are important for the model because they may be a single symptom depending on the patient.
+
 
 We can also determine which characteristics are most influential in predicting whether a person has **heart disease**.
 
@@ -74,6 +83,15 @@ For Example, **ST Depression**, according to some studies, can be highly signifi
 
 ## Results (High-Level)
 - Metrics reported for train/test (accuracy, precision, recall, F1).
+
+- **Accuracy** shows the overall proportion of correct predictions, but it can be misleading with imbalanced classes.
+- **Precision** indicates how reliable positive predictions are; it matters when we want to minimize false positives.
+- **Recall** measures how many real positive cases are detected; it is critical when we want to avoid missing at-risk patients.
+- **F1-Score** combines precision and recall into a single value, useful when a balance between both is needed.
+
+![alt text](docs/images/Metrics.png)
+
+Conclusion: in the comparison with and without regularization, the regularized model tends to keep metrics more stable and achieves a better balance between precision and recall, suggesting improved generalization and a lower risk of overfitting.
 
 
 - Cost vs. iterations plots for convergence.
