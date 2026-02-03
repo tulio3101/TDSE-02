@@ -122,22 +122,37 @@ When we add the regularization term, which aims to penalyze very large weights, 
 
 ![alt text](docs/images/costVsIterationsReg.png)
 
-## Deployment Evidence (SageMaker)
-Include screenshots in images/ and summarize below after completing the SageMaker exploration:
-- Training job status screenshot
-- Endpoint configuration screenshot
-- Inference response screenshot
+## Explore Deployment in Amazon SageMaker
 
-Example evidence statement:
-Model deployed at [endpoint ARN]. Tested input [Age=60, Chol=300, RestingBP=140, MaxHR=150, Oldpeak=2.0, Vessels=1] → Output: Prob=0.68 (high risk).
+Before deploying the model to Amazon SageMaker, it is necessary to export the best values ​​of the parameters obtained during training, both with and without the regularization term, based on the results obtained.
 
-## Deployment Notes
-High-level steps followed in SageMaker:
-1. Create notebook instance or Studio workspace.
-2. Upload data and notebook.
-3. Train model and serialize weights (w, b).
-4. Create inference script to load model and return probability.
-5. Deploy endpoint and invoke with sample input.
+Additionally, the mean and standard deviation of the training set are exported, as these values ​​will be required if normalization is applied to the input data received by the production model. These parameters must be stored with the model to ensure consistency between the training and inference phases.
+
+![alt text](docs/images/parameterExport.png)
+
+Once the parameter export is complete, access AWS Academy and then the Amazon SageMaker AI service, where a Notebook instance (Jupyter Notebook) is created.
+
+![alt text](docs/images/instanceNotebook.png)
+
+Upon launching the notebook, execute all the necessary cells to:
+
+- Import libraries
+
+- Load the trained model
+
+- Verify the exported parameters
+
+- Define the inference functions
+
+This is done before starting the deployment process, ensuring that the environment is correctly configured and that the model works locally within the notebook.
+
+Returning to the notebook, we created the inference functions and export the parameters in a .tar file
+
+![alt text](docs/images/inferenceFunctions.png)
+
+After this, using the SageMaker library on the AWS instance, we tried to store the tar file on the AWS hard drive (S3). However, we encountered problems due to a connection error.
+
+![alt text](docs/images/ConnectionRequest.png)
 
 ## Built With
 - NumPy
