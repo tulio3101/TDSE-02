@@ -124,13 +124,7 @@ When we add the regularization term, which aims to penalyze very large weights, 
 
 ## Explore Deployment in Amazon SageMaker
 
-Before deploying the model to Amazon SageMaker, it is necessary to export the best values ​​of the parameters obtained during training, both with and without the regularization term, based on the results obtained.
-
-Additionally, the mean and standard deviation of the training set are exported, as these values ​​will be required if normalization is applied to the input data received by the production model. These parameters must be stored with the model to ensure consistency between the training and inference phases.
-
-![alt text](docs/images/parameterExport.png)
-
-Once the parameter export is complete, access AWS Academy and then the Amazon SageMaker AI service, where a Notebook instance (Jupyter Notebook) is created.
+Using AWS, they created an instance where they created the corresponding space to run the entire previously created model.
 
 ![alt text](docs/images/instanceNotebook.png)
 
@@ -146,6 +140,15 @@ Upon launching the notebook, execute all the necessary cells to:
 
 This is done before starting the deployment process, ensuring that the environment is correctly configured and that the model works locally within the notebook.
 
+Before deploying the model to Amazon SageMaker, it is necessary to export the best values ​​of the parameters obtained during training, both with and without the regularization term, based on the results obtained.
+
+Additionally, the mean and standard deviation of the training set are exported, as these values ​​will be required if normalization is applied to the input data received by the production model. These parameters must be stored with the model to ensure consistency between the training and inference phases.
+
+![alt text](docs/images/parameterExport.png)
+
+Once the parameter export is complete, access AWS Academy and then the Amazon SageMaker AI service, where a Notebook instance (Jupyter Notebook) is created.
+
+
 Returning to the notebook, we created the inference functions and export the parameters in a .tar file
 
 ![alt text](docs/images/inferenceFunctions.png)
@@ -153,6 +156,8 @@ Returning to the notebook, we created the inference functions and export the par
 After this, using the SageMaker library on the AWS instance, we tried to store the tar file on the AWS hard drive (S3). However, we encountered problems due to a connection error.
 
 ![alt text](docs/images/ConnectionRequest.png)
+
+
 
 ## Built With
 - NumPy
